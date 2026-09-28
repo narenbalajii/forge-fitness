@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const formContent = `"use client";
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -35,11 +37,11 @@ function validate(data: FormData): FormErrors {
 
   if (!data["Email"].trim()) {
     errors["Email"] = "Email address is required.";
-  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(data["Email"])) {
+  } else if (!/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/.test(data["Email"])) {
     errors["Email"] = "Please enter a valid email address.";
   }
 
-  if (data["Phone"] && !/^[+\d\s\-().]{7,20}$/.test(data["Phone"])) {
+  if (data["Phone"] && !/^[+\\d\\s\\-().]{7,20}$/.test(data["Phone"])) {
     errors["Phone"] = "Please enter a valid phone number.";
   }
 
@@ -202,9 +204,9 @@ export function ContactForm() {
           aria-describedby={errors["Full Name"] ? "name-error" : undefined}
           aria-invalid={!!errors["Full Name"]}
           placeholder="Your full name"
-          className={`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary ${
+          className={\`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary \${
             errors["Full Name"] ? "border-red-500" : "border-border"
-          }`}
+          }\`}
         />
         {errors["Full Name"] && (
           <p id="name-error" role="alert" className="mt-1.5 text-xs text-red-400">
@@ -230,9 +232,9 @@ export function ContactForm() {
             aria-describedby={errors["Email"] ? "email-error" : undefined}
             aria-invalid={!!errors["Email"]}
             placeholder="you@example.com"
-            className={`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary ${
+            className={\`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary \${
               errors["Email"] ? "border-red-500" : "border-border"
-            }`}
+            }\`}
           />
           {errors["Email"] && (
             <p id="email-error" role="alert" className="mt-1.5 text-xs text-red-400">
@@ -257,9 +259,9 @@ export function ContactForm() {
             aria-describedby={errors["Phone"] ? "phone-error" : undefined}
             aria-invalid={!!errors["Phone"]}
             placeholder="+1 (212) 555-0000"
-            className={`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary ${
+            className={\`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary \${
               errors["Phone"] ? "border-red-500" : "border-border"
-            }`}
+            }\`}
           />
           {errors["Phone"] && (
             <p id="phone-error" role="alert" className="mt-1.5 text-xs text-red-400">
@@ -282,9 +284,9 @@ export function ContactForm() {
           onBlur={handleBlur}
           aria-describedby={errors["Subject"] ? "subject-error" : undefined}
           aria-invalid={!!errors["Subject"]}
-          className={`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary appearance-none ${
+          className={\`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary appearance-none \${
             errors["Subject"] ? "border-red-500" : "border-border"
-          } ${!formData["Subject"] ? "text-muted-foreground/50" : ""}`}
+          } \${!formData["Subject"] ? "text-muted-foreground/50" : ""}\`}
         >
           <option value="" disabled>
             Select a subject
@@ -317,9 +319,9 @@ export function ContactForm() {
           aria-describedby={errors["Message"] ? "message-error" : undefined}
           aria-invalid={!!errors["Message"]}
           placeholder="Tell us about your training goals or ask any questions..."
-          className={`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary resize-none ${
+          className={\`w-full bg-[#1a1a1a] border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-primary resize-none \${
             errors["Message"] ? "border-red-500" : "border-border"
-          }`}
+          }\`}
         />
         <div className="flex justify-between items-start mt-1.5">
           {errors["Message"] ? (
@@ -381,3 +383,7 @@ export function ContactForm() {
     </form>
   );
 }
+`;
+
+fs.writeFileSync('components/ContactForm.tsx', formContent);
+console.log("ContactForm.tsx updated.");

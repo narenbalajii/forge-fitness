@@ -15,11 +15,32 @@ const { chromium } = require('playwright');
     "https://forgegym01.netlify.app/contact",
   ];
 
-  console.log("Running Desktop QA...");
+  console.log("Running Desktop QA on Live Site...");
   let brokenCount = 0;
   for (const url of urls) {
     const res = await page.goto(url, { waitUntil: 'networkidle' });
     const title = await page.title();
+    
+    // Scroll to the bottom to trigger lazy loading
+    await page.evaluate(async () => {
+      await new Promise((resolve) => {
+        let totalHeight = 0;
+        const distance = 100;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 50);
+      });
+    });
+
+    // Wait a bit for images to finish loading
+    await page.waitForTimeout(2000);
+
     const brokenImages = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('img')).map(img => ({
         src: img.src,
@@ -36,7 +57,7 @@ const { chromium } = require('playwright');
       });
       brokenCount += brokenImages.length;
     } else {
-      console.log(`[OK] ${url}`);
+      console.log(`[OK] ${url} - All images loaded correctly.`);
     }
   }
 

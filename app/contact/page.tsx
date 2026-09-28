@@ -140,14 +140,6 @@ export default function ContactPage() {
             {/* Right — Form */}
             <div>
               <h2 className="font-heading text-3xl mb-8">SEND US A MESSAGE</h2>
-              {/* Hidden static form for Netlify build bots to detect */}
-              <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
-                <input type="text" name="name" />
-                <input type="email" name="email" />
-                <input type="tel" name="phone" />
-                <input type="text" name="subject" />
-                <textarea name="message"></textarea>
-              </form>
               <Suspense fallback={<div className="h-96 flex items-center justify-center text-muted-foreground">Loading form...</div>}>
                 <ContactForm />
               </Suspense>

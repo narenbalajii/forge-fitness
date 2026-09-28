@@ -62,7 +62,7 @@ const galleryImages = [
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1485395578879-6c3ab3f3c1a3?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80",
     alt: "Member working out with dumbbells",
     category: "Training",
     span: "",
@@ -80,7 +80,7 @@ const galleryImages = [
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1609207925812-4b5c4d4b1f73?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=800&q=80",
     alt: "Nutrition coaching consultation",
     category: "Coaching",
     span: "",

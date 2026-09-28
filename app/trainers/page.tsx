@@ -49,7 +49,7 @@ const trainers = [
     specializations: ["Nutrition Coaching", "Body Composition", "Sustainable Fat Loss"],
     bio: "Sofia bridges the gap between training and nutrition — the area where most people get stuck. She works alongside the training team to build members a complete picture of their health, addressing not just what they eat but how their habits, sleep, and stress affect their results. Her style is supportive and practical, focused on sustainable change rather than unsustainable restriction.",
     quote: "You can't out-train a bad diet, and you can't starve yourself to health. Balance is the only sustainable answer.",
-    image: "https://images.unsplash.com/photo-1609207925812-4b5c4d4b1f73?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=700&q=80",
   },
 ];
 

@@ -137,7 +137,7 @@ const galleryImages = [
   { src: "https://images.unsplash.com/photo-1577221084712-45b0445d2b00?w=800&q=80", alt: "Conditioning training area" },
   { src: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=80", alt: "One-on-one personal training session" },
   { src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80", alt: "Athlete performing deadlift" },
-  { src: "https://images.unsplash.com/photo-1485395578879-6c3ab3f3c1a3?w=800&q=80", alt: "Dumbbell training" },
+  { src: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80", alt: "Dumbbell training" },
 ];
 
 const whyForge = [
